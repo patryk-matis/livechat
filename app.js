@@ -1,9 +1,12 @@
 const express = require("express");
+const socket = require("socket.io");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, () => {
+    console.log(`Server is listening on port: ${PORT}`);
+});
 
-app.get('/', (req, res) => {
-    res.send("it works")
-})
 
-app.listen(5000);
+app.use(express.static("frontend")); //Jako fullstack użyłbym oczywiście React.js zamiast tego
+
