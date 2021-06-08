@@ -19,16 +19,20 @@ io.on("connection", socket => {
     });
 
     socket.on("typing", user => {
-        socket.broadcast.emit("typing", user); 
+        if (socket.isTyping != user.isTyping){
+            socket.broadcast.emit("typing", user);
+            socket.isTyping = user.isTyping;
+        }
     });
 
     socket.on("join", user => {
         socket.broadcast.emit("join", user);
-        socket.userId = user;
+        socket.user = user;
     });
 
     socket.on("disconnect", () => {
-        socket.broadcast.emit("user left", socket.userId);
+        socket.broadcast.emit("user left", socket.user);
+        socket.broadcast.emit("typing", {isTyping: false, name: socket.user}); 
     });
 
 })
