@@ -8,6 +8,8 @@ while(!username){
     username = prompt('What\'s your name');
 }
 
+socket.emit('join', username);
+
 text.addEventListener('keyup', event => {
     if (event.key === 'Enter'){
         sendMessage(event.target.value);
@@ -33,6 +35,15 @@ const sendMessage = (msg => {
     }
     text.value = '';
 });
+
+const systemMessage = ((username, event) => {
+    const message = {
+        user: "SpookChat",
+        message: username + event
+    };
+
+    positionMessage(message, 'system');
+})
 
 
 const positionMessage = ((msg, type) => {
@@ -60,4 +71,12 @@ socket.on('typing', user => {
     } else{
         typingMsg.innerHTML = "";
     }
+});
+
+socket.on('join', (user) => {
+    systemMessage(user, " has joined the chat");
+});
+
+socket.on('user left', (user) => {
+    systemMessage(user, " has left the chat");
 });

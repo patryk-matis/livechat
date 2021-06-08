@@ -21,4 +21,14 @@ io.on("connection", socket => {
     socket.on("typing", user => {
         socket.broadcast.emit("typing", user); 
     });
+
+    socket.on("join", user => {
+        socket.broadcast.emit("join", user);
+        socket.userId = user;
+    });
+
+    socket.on("disconnect", () => {
+        socket.broadcast.emit("user left", socket.userId);
+    });
+
 })
