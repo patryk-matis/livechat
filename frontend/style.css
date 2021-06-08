@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    align-items: center;
+    background: #F8F8F8;
+    display: flex;
+    font-family: sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #FFFFFF;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.05);
+    width: 750px;
+}
+
+
+.messages{
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 16px;
+    padding-top: 40px;
+}
+
+.messages div {
+    border-radius: 4px;
+    margin-bottom: 40px;
+    max-width: 300px;
+    padding: 20px;
+    position: relative;
+}
+
+.messages--incoming{
+    background: #E4E6EB;
+    color: #050505;
+    margin-right: auto;
+}
+
+.messages--outgoing{
+    background: #0084FF;
+    color: #FFFFFF;
+    margin-left: auto;
+}
+
+.messages h3 {
+    color: #333;
+    font-size: 14px;
+    left: 0;
+    position: absolute;
+    top: -20px;
+}
+
+.logo {
+    align-items: center;
+    background: #ebebeb;
+    display: flex;
+    padding: 25px;
+}
+
+.logo p {
+    color: #4e4e4e;
+    font-size: 21px;
+    margin-left: 10px;
+}
+
+.typing-msg {
+    position: absolute;
+    margin-top:-20px;
+    margin-left: 5px;
+}
+
+textarea {
+    background: #FBFBFB;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    padding: 20px;
+    resize: none;
+    width: 100%;
+}
